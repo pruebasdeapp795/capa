@@ -3,11 +3,16 @@ package com.example.app_capacitacion
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_capacitacion.Models.LoginRequest
+import com.example.app_capacitacion.Models.LoginResponse
+import retrofit2.Call
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
@@ -29,8 +34,33 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            val email = findViewById<EditText>(R.id.user).text.toString()
+            val password = findViewById<EditText>(R.id.password).text.toString()
+
+            val loginRequest = LoginRequest(email, password)
+
+            ApiClient.apiService.login(loginRequest).enqueue(object : retrofit2.Callback<LoginResponse> {
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    if (response.isSuccessful) {
+                        val loginResponse = response.body()
+                        loginResponse?.let {
+                            ApiClient.setAuthToken(it.access_token)
+
+
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    } else {
+                        val errorMessage = "Error de inicio de sesión: ${response.code()}"
+
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    val errorMessage = "Error de conexión: ${t.message}"
+                }
+            })
         }
 
 

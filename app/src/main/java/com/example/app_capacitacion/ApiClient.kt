@@ -10,7 +10,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "http://10.0.2.2:8000/api/"
+    private const val BASE_URL = "http://10.11.0.137:8000/api/"
     private var authToken: String? = null
 
     fun setAuthToken(token: String) {
@@ -28,7 +28,7 @@ object ApiClient {
             val request = requestBuilder.build()
             return chain.proceed(request)
         }
-    } 
+    }
 
     val client: Retrofit by lazy {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -54,3 +54,5 @@ object ApiClient {
         client.create(ApiServices::class.java)
     }
 }
+
+
