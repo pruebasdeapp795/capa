@@ -18,7 +18,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_logo"
         android:label="Capacitaciones"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config">
         <activity
             android:name=".initActivity"
             android:exported="false" />

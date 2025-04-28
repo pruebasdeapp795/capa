@@ -13,6 +13,8 @@ import com.example.app_capacitacion.Models.LoginRequest
 import com.example.app_capacitacion.Models.LoginResponse
 import retrofit2.Call
 import retrofit2.Response
+import android.widget.Toast
+
 
 class LoginActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
@@ -52,13 +54,19 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                         }
                     } else {
-                        val errorMessage = "Error de inicio de sesión: ${response.code()}"
+                        val errorMessage = when (response.code()) {
+                            401 -> "Credenciales incorrectas"
+                            else -> "Error de inicio de sesión: ${response.code()}"
+                        }
+                        Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
 
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     val errorMessage = "Error de conexión: ${t.message}"
+                    Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
+
                 }
             })
         }
