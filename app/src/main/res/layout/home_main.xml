@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tb"
+    android:layout_above="@+id/bottom_navigation"
+    tools:context=".HomeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="">
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/drag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/linear_card"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.77">
+
+        <FrameLayout
+            android:layout_width="154dp"
+            android:layout_height="195dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/linear_card"
+            android:backgroundTint="#E7E4E2"
+            android:elevation="28dp">
+
+            <Button
+                android:id="@+id/scan_button2"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="154dp"
+                android:text="Capacitacion"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/buttonback8"
+                android:layout_width="136dp"
+                android:layout_height="137dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/capacitacion"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="154dp"
+            android:layout_height="195dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/linear_card"
+            android:backgroundTint="#E7E4E2"
+            android:elevation="28dp">
+
+            <Button
+                android:id="@+id/scan_button"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="154dp"
+                android:text="Capacitacion"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <ImageView
+               android:id="@+id/view_capa"
+                android:layout_width="136dp"
+                android:layout_height="137dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/capacitacion"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/circle_container"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/circle_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/user_initials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="1dp"
+            android:text="PP"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/square_container"
+        android:layout_width="185dp"
+        android:layout_height="68dp"
+        android:background="@drawable/cards_corner"
+        android:backgroundTint="#2ea2cc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <ImageView
+        android:id="@+id/toolbar_logo"
+        android:layout_width="122dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:maxWidth="120dp"
+        android:src="@drawable/logo_tubosa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="117dp"
+        android:layout_height="19dp"
+        android:fontFamily="monospace"
+        android:text="Hola,usuario"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="138dp"
+        android:layout_height="15dp"
+        android:fontFamily="monospace"
+        android:text="Te damos la bienvenida"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.081" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/tb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/bottom_navigation"
+        app:itemTextColor="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
