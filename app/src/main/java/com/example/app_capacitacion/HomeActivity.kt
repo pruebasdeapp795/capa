@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.zxing.integration.android.IntentIntegrator
 import android.app.AlertDialog
 import android.content.Context
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import retrofit2.Call
 import retrofit2.Response
@@ -33,6 +34,28 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_main)
+
+        val userName = intent.getStringExtra("USER_NAME")
+        val greetingTextView: TextView = findViewById(R.id.textView)
+        val initialsTextView: TextView = findViewById(R.id.user_initials)
+
+
+        if (!userName.isNullOrEmpty()) {
+            greetingTextView.text = "Hola, $userName"
+
+            val nameParts = userName.split(" ")
+            val initials = StringBuilder()
+            for (part in nameParts) {
+                if (part.isNotBlank()) {
+                    initials.append(part[0].uppercaseChar())
+                }
+            }
+            initialsTextView.text = initials.toString()
+        } else {
+            greetingTextView.text = "Hola, usuario"
+            initialsTextView.text = "U"
+        }
+
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->

@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.login_main)
 
+
+
         toolbar= findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -49,7 +51,10 @@ class LoginActivity : AppCompatActivity() {
                             ApiClient.setAuthToken(it.access_token)
 
 
+                            val userName = it.user.name
+
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            intent.putExtra("USER_NAME", userName)
                             startActivity(intent)
                             finish()
                         }
