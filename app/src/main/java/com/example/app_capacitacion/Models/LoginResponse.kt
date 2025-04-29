@@ -12,4 +12,5 @@ data class LoginResponse(
         val email: String,
 
     )
+
 }

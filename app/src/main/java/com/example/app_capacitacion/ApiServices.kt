@@ -1,5 +1,6 @@
 package com.example.app_capacitacion
 
+import com.example.app_capacitacion.Models.GeneralResponse
 import com.example.app_capacitacion.Models.LoginRequest
 import com.example.app_capacitacion.Models.LoginResponse
 import retrofit2.Call
@@ -15,6 +16,9 @@ interface ApiServices {
 
     @GET("user")
     fun getUser(@Header("Authorization") authToken: String): Call<LoginResponse.User>
+
+    @POST("logout")
+    fun logout(@Header("Authorization") authToken: String): Call<GeneralResponse>
 
 
     /*@GET("ruta/del/endpoint/para/la/tabla")

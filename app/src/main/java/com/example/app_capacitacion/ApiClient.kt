@@ -10,11 +10,13 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "http://10.11.0.137:8000/api/"
-    private var authToken: String? = null
+    private const val BASE_URL = "http://192.168.220.27:8000/api/"
+    private var _authToken: String? = null
+    val authToken: String?
+        get() = _authToken
 
-    fun setAuthToken(token: String) {
-        authToken = token
+    fun setAuthToken(token: String?) {
+        _authToken = token
     }
 
     private val authInterceptor = object : Interceptor {

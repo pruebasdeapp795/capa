@@ -13,7 +13,10 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.zxing.integration.android.IntentIntegrator
 import android.app.AlertDialog
+import android.content.Context
 import androidx.activity.OnBackPressedCallback
+import retrofit2.Call
+import retrofit2.Response
 
 
 class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutConfirmationListener  {
@@ -128,7 +131,7 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
     }
 
     override fun onLogoutConfirmed() {
-        Toast.makeText(this, "Cerrando sesión...", Toast.LENGTH_SHORT).show()
+        performLogout()
     }
 
     override fun onLogoutCancelled() {
@@ -141,6 +144,58 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         confirmLogoutDialogFragment.show(fm, "fragment_confirm_logout")
     }
 
+    private fun performLogout() {
+        val authToken = ApiClient.authToken
+
+        if (!authToken.isNullOrBlank()) {
+            ApiClient.apiService.logout("Bearer $authToken")
+                .enqueue(object : retrofit2.Callback<com.example.app_capacitacion.Models.GeneralResponse> {
+                    override fun onResponse(
+                        call: Call<com.example.app_capacitacion.Models.GeneralResponse>,
+                        response: Response<com.example.app_capacitacion.Models.GeneralResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            ApiClient.setAuthToken(null)
+                            val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+                            sharedPref.edit().remove("access_token").apply()
+
+                            Toast.makeText(
+                                this@HomeActivity,
+                                response.body()?.message ?: "Logout exitoso",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            val intent = Intent(this@HomeActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this@HomeActivity,
+                                "Error al cerrar sesión: ${response.code()}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<com.example.app_capacitacion.Models.GeneralResponse>,
+                        t: Throwable
+                    ) {
+                        Toast.makeText(
+                            this@HomeActivity,
+                            "Error de conexión al cerrar sesión: ${t.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        } else {
+            Toast.makeText(this@HomeActivity, "No hay sesión activa para cerrar.", Toast.LENGTH_SHORT)
+                .show()
+            val intent = Intent(this@HomeActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 
 }
