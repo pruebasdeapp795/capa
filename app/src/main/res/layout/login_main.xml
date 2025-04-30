@@ -129,7 +129,6 @@
         android:id="@+id/textView7"
         android:layout_width="184dp"
         android:layout_height="20dp"
-        android:paintFlags="underline"
         android:text="@string/texto_subrayado"
         android:textColor="#1B3764"
         android:textSize="16sp"

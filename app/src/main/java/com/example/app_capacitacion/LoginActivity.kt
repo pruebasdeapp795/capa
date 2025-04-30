@@ -23,8 +23,6 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.login_main)
 
-
-
         toolbar= findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 

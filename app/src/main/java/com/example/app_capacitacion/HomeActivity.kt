@@ -16,6 +16,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentManager
 import retrofit2.Call
 import retrofit2.Response
 
@@ -39,15 +40,20 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         val greetingTextView: TextView = findViewById(R.id.textView)
         val initialsTextView: TextView = findViewById(R.id.user_initials)
 
-
         if (!userName.isNullOrEmpty()) {
             greetingTextView.text = "Hola, $userName"
 
             val nameParts = userName.split(" ")
             val initials = StringBuilder()
+            var count = 0
+
             for (part in nameParts) {
-                if (part.isNotBlank()) {
+                if (part.isNotBlank() && count < 2) {
                     initials.append(part[0].uppercaseChar())
+                    count++
+                }
+                if (count >= 2) {
+                    break
                 }
             }
             initialsTextView.text = initials.toString()
@@ -61,9 +67,11 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
+                    setContentView(R.layout.dialog_capacitante_info)
                 }
                 R.id.navigation_dashboard -> {
                     Toast.makeText(this, "Panel seleccionado", Toast.LENGTH_SHORT).show()
+
 
                 }
                 R.id.navigation_notifications -> {
@@ -75,6 +83,19 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
 
         val scanButton: Button = findViewById(R.id.scan_button)
         scanButton.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                startScan()
+            } else {
+                requestCameraPermission.launch(Manifest.permission.CAMERA)
+            }
+        }
+
+        val scanButton2: Button = findViewById(R.id.scan_button2)
+        scanButton2.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.CAMERA
@@ -167,6 +188,8 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         confirmLogoutDialogFragment.show(fm, "fragment_confirm_logout")
     }
 
+
+
     private fun performLogout() {
         val authToken = ApiClient.authToken
 
@@ -222,3 +245,5 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
 
 
 }
+
+
