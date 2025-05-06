@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import com.example.app_capacitacion.Models.ModeloDatos
 
 
 interface ApiServices {
@@ -21,8 +22,9 @@ interface ApiServices {
     fun logout(@Header("Authorization") authToken: String): Call<GeneralResponse>
 
 
-    /*@GET("ruta/del/endpoint/para/la/tabla")
+
+    @GET("cursantes")
     fun obtenerDatosTabla(): Call<List<ModeloDatos>>
-    */
+
 
 }

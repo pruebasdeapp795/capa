@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">app-capacitacion</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="texto_subrayado"><u>olvidaste tu contraseña</u></string>
+    <string name="texto_subrayado"><u>OLVIDASTES TU CONTRASEÑA</u></string>
 
 </resources>
