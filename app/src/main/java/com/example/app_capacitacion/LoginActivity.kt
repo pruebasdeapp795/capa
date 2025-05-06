@@ -26,9 +26,17 @@ class LoginActivity : AppCompatActivity() {
         toolbar= findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        val loginolvidaste: Button = findViewById(R.id.olvidaste)
+
         val loginback: Button = findViewById(R.id.buttonback)
 
         val loginButton: Button = findViewById(R.id.loginButton)
+
+        loginolvidaste.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
         loginback.setOnClickListener {
             val intent = Intent(this, InicioActivity::class.java)

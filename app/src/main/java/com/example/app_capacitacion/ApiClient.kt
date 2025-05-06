@@ -10,7 +10,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "http://10.100.101.238:8000/api/"
+    private const val BASE_URL = "http://10.11.0.137:8000/api/"
     private var _authToken: String? = null
     val authToken: String?
         get() = _authToken
