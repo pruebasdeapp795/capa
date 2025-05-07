@@ -20,7 +20,6 @@ import androidx.fragment.app.FragmentManager
 import retrofit2.Call
 import retrofit2.Response
 
-
 class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutConfirmationListener  {
 
     private val requestCameraPermission =

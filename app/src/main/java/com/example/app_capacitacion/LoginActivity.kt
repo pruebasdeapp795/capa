@@ -1,5 +1,6 @@
 package com.example.app_capacitacion
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -14,6 +15,8 @@ import com.example.app_capacitacion.Models.LoginResponse
 import retrofit2.Call
 import retrofit2.Response
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import com.example.app_capacitacion.HomeActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -36,6 +39,23 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
+
+        val callback = object : OnBackPressedCallback(true ) {
+            override fun handleOnBackPressed() {
+                AlertDialog.Builder(this@LoginActivity)
+                    .setTitle("¿Desea salir?")
+                    .setMessage("¿Está seguro que desea salir de la aplicación?")
+                    .setPositiveButton("Sí") { dialog, _ ->
+                        dialog.dismiss()
+                        finishAffinity()
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
 
 
         loginback.setOnClickListener {

@@ -1,5 +1,6 @@
 package com.example.app_capacitacion
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -23,6 +24,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_forgot_password)
+
+        val loginback: Button = findViewById(R.id.buttonback)
+
+        loginback.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         emailEditText = findViewById(R.id.textemail)
         sendRequestButton = findViewById(R.id.enviar)

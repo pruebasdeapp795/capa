@@ -1,12 +1,15 @@
 package com.example.app_capacitacion
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_capacitacion.LoginActivity
 
 class InicioActivity : AppCompatActivity() {
 
@@ -24,6 +27,23 @@ class InicioActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        val callback = object : OnBackPressedCallback(true ) {
+            override fun handleOnBackPressed() {
+                AlertDialog.Builder(this@InicioActivity)
+                    .setTitle("¿Desea salir?")
+                    .setMessage("¿Está seguro que desea salir de la aplicación?")
+                    .setPositiveButton("Sí") { dialog, _ ->
+                        dialog.dismiss()
+                        finishAffinity()
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
