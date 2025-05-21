@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:elevation="16dp"
+        android:padding="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/textViewCourseNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Nombre del Curso"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewCourseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Curso de ejemplo"
+            android:textSize="15sp"
+            android:paddingBottom="6dp" />
+
+        <TextView
+            android:id="@+id/textViewExpirationDateLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vigencia del curso"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewExpirationDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20/12/2025"
+            android:textSize="15sp"
+            android:paddingBottom="6dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

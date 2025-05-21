@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginTop="200dp"
+    android:background="@drawable/linear_card">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,7 +14,8 @@
         android:layout_marginBottom="16dp"
         android:text="¿Estás seguro de cerrar sesión?"
         android:textColor="@color/tb"
-        android:textSize="18sp" />
+        android:textSize="20sp"
+        android:fontFamily="serif"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +29,9 @@
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
             android:textColor="@color/white"
-        android:background="@color/tolbar"
+        android:textSize="16sp"
+        android:background="@drawable/cards_corner"
+            android:backgroundTint="@color/tb"
         android:text="Cancelar" />
 
         <Button
@@ -34,8 +39,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#D1D1D1"
-            android:textColor="#FF0000"
+            android:textColor="#FF0A0A"
+            android:background="@drawable/cards_corner"
+            android:backgroundTint="@color/tb"
+            android:textSize="16sp"
             android:text="Aceptar" />
     </LinearLayout>
 

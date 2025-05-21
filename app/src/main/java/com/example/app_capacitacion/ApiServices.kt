@@ -3,7 +3,6 @@ package com.example.app_capacitacion
 import com.example.app_capacitacion.Models.GeneralResponse
 import com.example.app_capacitacion.Models.LoginRequest
 import com.example.app_capacitacion.Models.LoginResponse
-import com.example.app_capacitacion.Models.MessageResponse
 import com.example.app_capacitacion.Models.MessageResponse.ForgotPasswordResponse
 import com.example.app_capacitacion.Models.MessageResponse.ResetPasswordResponse
 import retrofit2.Call

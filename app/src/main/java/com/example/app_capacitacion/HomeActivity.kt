@@ -1,39 +1,28 @@
 package com.example.app_capacitacion
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.zxing.integration.android.IntentIntegrator
 import android.app.AlertDialog
 import android.content.Context
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
+import com.example.app_capacitacion.databinding.HomeMainBinding
 import retrofit2.Call
 import retrofit2.Response
 
-class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutConfirmationListener  {
+class HomeActivity : AppCompatActivity(),ConfirmLogoutDialogFragment.OnLogoutConfirmationListener  {
 
-    private val requestCameraPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                startScan()
-            } else {
-                showToast("Se necesita permiso de cámara para escanear QR.")
-            }
-        }
+
+    private  lateinit var  binding: HomeMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_main)
+        binding = HomeMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(HomeCapa())
 
         val userName = intent.getStringExtra("USER_NAME")
         val greetingTextView: TextView = findViewById(R.id.textView)
@@ -62,48 +51,23 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         }
 
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    setContentView(R.layout.dialog_capacitante_info)
-                }
-                R.id.navigation_dashboard -> {
-                    Toast.makeText(this, "Panel seleccionado", Toast.LENGTH_SHORT).show()
+        binding.bottomNavigation.setOnItemSelectedListener {
 
-
-                }
+            when(it.itemId){
+                R.id.navigation_info -> replaceFragment(DialogInfo())
+                R.id.navigation_dashboard -> replaceFragment(HomeCapa())
                 R.id.navigation_notifications -> {
                     mostrarDialogoConfirmacion()
+                    true
                 }
+                else -> {
+
+                }
+
             }
             true
-        }
 
-        val scanButton: Button = findViewById(R.id.scan_button)
-        scanButton.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.CAMERA
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                startScan()
-            } else {
-                requestCameraPermission.launch(Manifest.permission.CAMERA)
-            }
-        }
 
-        val scanButton2: Button = findViewById(R.id.scan_button2)
-        scanButton2.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.CAMERA
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                startScan()
-            } else {
-                requestCameraPermission.launch(Manifest.permission.CAMERA)
-            }
         }
 
         val callback = object : OnBackPressedCallback(true ) {
@@ -123,54 +87,16 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         }
         onBackPressedDispatcher.addCallback(this, callback)
 
+
     }
 
-    private fun startScan() {
-        val integrator = IntentIntegrator(this)
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-        integrator.setPrompt("Escanear QR")
-        integrator.setCameraId(0)
-        integrator.setBeepEnabled(true)
-        integrator.setBarcodeImageEnabled(true)
-        integrator.initiateScan()
-    }
+    private fun replaceFragment(fragment: Fragment){
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        val fragmentManager = supportFragmentManager
+        val fragmentTransition = fragmentManager.beginTransaction()
+        fragmentTransition.replace(R.id.frame_layout,fragment)
+        fragmentTransition.commit()
 
-        if (result != null) {
-            if (result.contents == null) {
-                showToast("Escaneo cancelado")
-            } else {
-                val scannedData = result.contents
-                if (isValidContent(scannedData)) {
-                    showToast("Código escaneado: $scannedData")
-                    if (isValidUrl(scannedData)) {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(scannedData))
-                        startActivity(intent)
-                    }
-                } else {
-                    showToast("El QR escaneado no es válido. ")
-                }
-            }
-        }
-    }
-
-    private fun isValidUrl(url: String): Boolean {
-        return try {
-            Uri.parse(url).scheme?.startsWith("http") == true
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    private fun isValidContent(content: String): Boolean {
-        return content.matches("\\d+".toRegex()) || isValidUrl(content)
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onLogoutConfirmed() {
@@ -186,6 +112,8 @@ class HomeActivity : AppCompatActivity(), ConfirmLogoutDialogFragment.OnLogoutCo
         val confirmLogoutDialogFragment = ConfirmLogoutDialogFragment()
         confirmLogoutDialogFragment.show(fm, "fragment_confirm_logout")
     }
+
+
 
 
 

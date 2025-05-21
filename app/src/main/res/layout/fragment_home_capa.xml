@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/linear_card"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeCapa">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp">
+
+        <View
+            android:id="@+id/square_container"
+            android:layout_width="185dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cards_corner"
+            android:backgroundTint="#2ea2cc" />
+
+        <ImageView
+            android:id="@+id/toolbar_logo"
+            android:layout_width="122dp"
+            android:layout_height="30dp"
+            android:adjustViewBounds="true"
+            android:maxWidth="120dp"
+            android:src="@drawable/logo_tubosa"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="29dp"
+            android:layout_marginStart="8dp"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/drag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/linear_card"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.81"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="191dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/linear_card"
+            android:backgroundTint="#E7E4E2"
+            android:elevation="28dp">
+
+            <ImageView
+                android:id="@+id/buttonback8"
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/capacitacion"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/scan_button2"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom"
+                android:text="Capacitacion"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="189dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/linear_card"
+            android:backgroundTint="#E7E4E2"
+            android:elevation="28dp">
+
+            <ImageView
+                android:id="@+id/view_capa"
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/capacitacion"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/scan_button"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom"
+                android:text="Capacitacion"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

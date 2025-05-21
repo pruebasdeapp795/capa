@@ -4,43 +4,55 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.app_capacitacion.Models.LoginRequest
 import com.example.app_capacitacion.Models.LoginResponse
 import retrofit2.Call
 import retrofit2.Response
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import com.example.app_capacitacion.HomeActivity
 
 
 class LoginActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.login_main)
 
-        toolbar= findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val loginolvidaste: Button = findViewById(R.id.olvidaste)
-
-        val loginback: Button = findViewById(R.id.buttonback)
-
+        val loginOlvidaste: Button = findViewById(R.id.olvidaste)
+        val loginBack: Button = findViewById(R.id.buttonback)
         val loginButton: Button = findViewById(R.id.loginButton)
+        val checkRecordarme: CheckBox = findViewById(R.id.radioButton)
 
-        loginolvidaste.setOnClickListener {
+        val emailEditText = findViewById<EditText>(R.id.user)
+        val passwordEditText = findViewById<EditText>(R.id.password)
+
+        val savedEmail = getUserEmail()
+        if (savedEmail != null) {
+            emailEditText.setText(savedEmail)
+            checkRecordarme.isChecked = true
+        }
+
+        loginOlvidaste.setOnClickListener {
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
 
-        val callback = object : OnBackPressedCallback(true ) {
+        loginBack.setOnClickListener {
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+        }
+
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 AlertDialog.Builder(this@LoginActivity)
                     .setTitle("¿Desea salir?")
@@ -57,15 +69,15 @@ class LoginActivity : AppCompatActivity() {
         }
         onBackPressedDispatcher.addCallback(this, callback)
 
-
-        loginback.setOnClickListener {
-            val intent = Intent(this, InicioActivity::class.java)
-            startActivity(intent)
-        }
-
         loginButton.setOnClickListener {
-            val email = findViewById<EditText>(R.id.user).text.toString()
-            val password = findViewById<EditText>(R.id.password).text.toString()
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+            val recordar = checkRecordarme.isChecked
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val loginRequest = LoginRequest(email, password)
 
@@ -76,11 +88,14 @@ class LoginActivity : AppCompatActivity() {
                         loginResponse?.let {
                             ApiClient.setAuthToken(it.access_token)
 
-
-                            val userName = it.user.name
+                            if (recordar) {
+                                saveUserEmail(email)
+                            } else {
+                                clearUserEmail()
+                            }
 
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                            intent.putExtra("USER_NAME", userName)
+                            intent.putExtra("USER_NAME", it.user.name)
                             startActivity(intent)
                             finish()
                         }
@@ -90,24 +105,29 @@ class LoginActivity : AppCompatActivity() {
                             else -> "Error de inicio de sesión: ${response.code()}"
                         }
                         Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
-
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     val errorMessage = "Error de conexión: ${t.message}"
                     Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
-
                 }
             })
         }
+    }
 
+    fun saveUserEmail(email: String) {
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        prefs.edit().putString("user_email", email).apply()
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+    fun getUserEmail(): String? {
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        return prefs.getString("user_email", null)
+    }
 
-        }
+    fun clearUserEmail() {
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        prefs.edit().remove("user_email").apply()
     }
 }
