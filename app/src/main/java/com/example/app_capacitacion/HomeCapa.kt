@@ -13,6 +13,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.google.zxing.integration.android.IntentIntegrator
 import android.Manifest
+import com.example.app_capacitacion.Models.Capacitante
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeCapa : Fragment() {
 
@@ -37,14 +41,10 @@ class HomeCapa : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val scanButton: Button = view.findViewById(R.id.scan_button)
-        scanButton.setOnClickListener {
-            checkCameraPermissionAndStartScan()
-        }
-
         val scanButton2: Button = view.findViewById(R.id.scan_button2)
-        scanButton2.setOnClickListener {
-            checkCameraPermissionAndStartScan()
-        }
+
+        scanButton.setOnClickListener { checkCameraPermissionAndStartScan() }
+        scanButton2.setOnClickListener { checkCameraPermissionAndStartScan() }
     }
 
     private fun checkCameraPermissionAndStartScan() {
@@ -76,19 +76,15 @@ class HomeCapa : Fragment() {
                 showToast("Escaneo cancelado")
             } else {
                 val scannedContent = result.contents
-                if (isValidContent(scannedContent)) {
-                    showToast("Contenido escaneado: $scannedContent")
-                    if (isValidUrl(scannedContent)) {
-                        try {
-                            val browserIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, Uri.parse(scannedContent))
-                            startActivity(browserIntent)
-                        } catch (e: Exception) {
-                            showToast("No se pudo abrir la URL.")
-                        }
+                if (isValidUrl(scannedContent)) {
+                    val documento = extractDocumentoFromUrl(scannedContent)
+                    if (documento != null) {
+                        fetchCapacitanteByDocumento(documento)
                     } else {
+                        showToast("URL escaneada no es válida para capacitantes.")
                     }
                 } else {
-                    showToast("Contenido QR no válido.")
+                    showToast("El contenido del QR no es una URL válida.")
                 }
             }
         } else {
@@ -96,21 +92,49 @@ class HomeCapa : Fragment() {
         }
     }
 
+    private fun extractDocumentoFromUrl(url: String): String? {
+        val uri = Uri.parse(url)
+        val pathSegments = uri.pathSegments
+        return if (pathSegments.size >= 2 && pathSegments[pathSegments.size - 2] == "capacitantes") {
+            pathSegments.last()
+        } else {
+            null
+        }
+    }
+
+    private fun fetchCapacitanteByDocumento(documento: String) {
+        ApiClient.getApi().getCapacitante(documento).enqueue(object : Callback<Capacitante> {
+            override fun onResponse(call: Call<Capacitante>, response: Response<Capacitante>) {
+                if (response.isSuccessful) {
+                    val capacitante = response.body()
+                    if (capacitante != null) {
+                        // ¡Aquí está el cambio! Usar .show() para un DialogFragment
+                        val dialogInfoFragment = DialogInfo.newInstance(capacitante)
+                        dialogInfoFragment.show(parentFragmentManager, "DialogInfoTag") // Puedes usar cualquier tag
+                    } else {
+                        showToast("Capacitante no encontrado o datos nulos.")
+                    }
+                } else {
+                    showToast("Capacitante no encontrado.")
+                }
+            }
+
+            override fun onFailure(call: Call<Capacitante>, t: Throwable) {
+                showToast("Error de red: ${t.message}")
+            }
+        })
+    }
+
     private fun isValidUrl(url: String): Boolean {
         return try {
-            Uri.parse(url).scheme?.startsWith("http") == true || Uri.parse(url).scheme?.startsWith("https") == true
+            val scheme = Uri.parse(url).scheme
+            scheme?.startsWith("http") == true || scheme?.startsWith("https") == true
         } catch (e: Exception) {
             false
         }
     }
 
-    private fun isValidContent(content: String): Boolean {
-        return content.matches("\\d+".toRegex()) || isValidUrl(content)
-    }
-
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
-
 }

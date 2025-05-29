@@ -5,12 +5,12 @@
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/capacitacion"
-        android:title="Panel" />
+        android:title="Panel De Scaneo" />
 
     <item
         android:id="@+id/navigation_info"
         android:icon="@drawable/home"
-        android:title="Inicio" />
+        android:title="Informacion usuario" />
 
     <item
         android:id="@+id/navigation_notifications"

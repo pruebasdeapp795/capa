@@ -10,7 +10,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private const val BASE_URL = "http://10.11.0.188:8000/api/"
+    private const val BASE_URL = "http://192.168.75.27:8000/api/"
     private var _authToken: String? = null
     val authToken: String?
         get() = _authToken
@@ -50,11 +50,15 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
+
     }
 
     val apiService: ApiServices by lazy {
         client.create(ApiServices::class.java)
     }
+
+    fun getApi(): ApiServices = apiService
+
 }
 
 

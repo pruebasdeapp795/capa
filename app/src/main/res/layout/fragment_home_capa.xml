@@ -19,7 +19,7 @@
             android:layout_width="185dp"
             android:layout_height="40dp"
             android:background="@drawable/cards_corner"
-            android:backgroundTint="#2ea2cc" />
+            android:backgroundTint="#A6C6EB" />
 
         <ImageView
             android:id="@+id/toolbar_logo"
