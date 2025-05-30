@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.app_capacitacion.Models.Capacitante
 
@@ -62,8 +63,13 @@ class DialogInfo : DialogFragment() {
 
         val mostrarCursosButton: Button = view.findViewById(R.id.boton_cursos)
         mostrarCursosButton.setOnClickListener {
-            val cursosDialogFragment = CursosDialogFragment.newInstance()
-            cursosDialogFragment.show(childFragmentManager, CursosDialogFragment.TAG)
+            capacitante?.cursos?.let { coursesList ->
+                val cursosDialogFragment = CursosDialogFragment.newInstance(coursesList)
+                cursosDialogFragment.show(childFragmentManager, CursosDialogFragment.TAG)
+            } ?: run {
+                // Maneja el caso en el que no haya cursos
+                Toast.makeText(context, "No hay cursos disponibles para este capacitante.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val mostrarInfoAdicionalButton: Button = view.findViewById(R.id.boton_info_addi)

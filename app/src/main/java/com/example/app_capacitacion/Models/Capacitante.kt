@@ -15,16 +15,16 @@ data class Capacitante(
     val cursos: List<Curso>
 ) : Serializable {
 
-data class Curso(
-    val id: Int,
-    val nombre_curso: String,
-    val vigencia_curso: String,
-    val instructor: Instructor
-)
+    data class Curso(
+        val id: Int,
+        val nombre_curso: String,
+        val vigencia_curso: String,
+        val instructor: Instructor
+    )
 
-data class Instructor(
-    val id: Int,
-    val nombre: String,
-    val empresa: String
-)
+    data class Instructor(
+        val id: Int,
+        val nombre: String,
+        val empresa: String
+    )
 }

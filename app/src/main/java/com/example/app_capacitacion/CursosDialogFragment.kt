@@ -8,19 +8,45 @@ import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app_capacitacion.Models.Capacitante
 import com.example.app_capacitacion.Models.Course
+import java.io.Serializable
 
 class CursosDialogFragment : DialogFragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var courseAdapter: CourseAdapter
-    private val courseList: MutableList<Course> = mutableListOf()
+    // Ahora courseList se inicializará con los datos del Bundle
+    private var courseList: MutableList<Course> = mutableListOf()
 
     companion object {
         const val TAG = "CursosDialogFragment"
-        fun newInstance(): CursosDialogFragment {
-            return CursosDialogFragment()
+        private const val ARG_COURSES = "courses_list" // Clave para el Bundle
+
+        // Cambiamos newInstance para que reciba una lista de Capacitante.Curso
+        fun newInstance(courses: List<Capacitante.Curso>): CursosDialogFragment {
+            val fragment = CursosDialogFragment()
+            val args = Bundle().apply {
+                // Mapeamos Capacitante.Curso a tu modelo Course para el adaptador
+                val simplifiedCourses = courses.map {
+                    Course(nombre = it.nombre_curso, vencimiento = it.vigencia_curso)
+                }
+                // Asegúrate de que Course sea Serializable para esto
+                putSerializable(ARG_COURSES, ArrayList(simplifiedCourses) as Serializable)
+            }
+            fragment.arguments = args
+            return fragment
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Recuperamos la lista de cursos del Bundle aquí
+        arguments?.let {
+            courseList = (it.getSerializable(ARG_COURSES) as? ArrayList<Course>)?.toMutableList() ?: mutableListOf()
+        }
+        // Aplica el estilo de diálogo completo si lo tienes definido
+        setStyle(STYLE_NORMAL, R.style.FullScreenDialog)
     }
 
     override fun onCreateView(
@@ -28,7 +54,7 @@ class CursosDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_cursos, container, false)
+        return inflater.inflate(R.layout.dialog_cursos, container, false) // Usa tu layout existente
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,23 +63,12 @@ class CursosDialogFragment : DialogFragment() {
         recyclerView = view.findViewById(R.id.recyclerViewDialogCourses)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        // Inicializamos el adaptador con la lista de cursos recuperada
         courseAdapter = CourseAdapter(courseList)
         recyclerView.adapter = courseAdapter
 
-        val dummyCourses = listOf(
-            Course("Seguridad en Alturas", "2025-12-31"),
-            Course("Primeros Auxilios Avanzados", "2026-06-15"),
-            Course("Manejo de Extintores", "2025-10-01"),
-            Course("Trabajo en Espacios Confinados", "2026-03-20"),
-            Course("Trabajo en Espacios Confinados", "2026-03-20"),
-            Course("Trabajo en Espacios Confinados", "2026-03-20"),
-            Course("Trabajo en Espacios Confinados", "2026-03-20"),
-            Course("Trabajo en Espacios Confinados", "2026-03-20")
-
-
-        )
-
-        courseAdapter.updateCourses(dummyCourses)
+        // Ya no necesitamos los dummyCourses aquí, la lista se pasa desde DialogInfo
+        // courseAdapter.updateCourses(dummyCourses) // Esto se elimina
 
         val closeButton: Button = view.findViewById(R.id.buttonCloseDialog)
         closeButton.setOnClickListener {
@@ -68,7 +83,6 @@ class CursosDialogFragment : DialogFragment() {
             (resources.displayMetrics.heightPixels * 0.8).toInt()
         )
     }
-
 
 
 

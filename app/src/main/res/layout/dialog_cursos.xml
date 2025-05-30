@@ -13,8 +13,6 @@
         android:scrollbars="vertical"
         android:background="@drawable/cards_corner"/>
 
-
-
     <Button
         android:id="@+id/buttonCloseDialog"
         android:layout_width="match_parent"
