@@ -25,7 +25,7 @@ class CourseAdapter (
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val course = courses[position]
         holder.courseName.text = course.nombre
-        holder.expirationDate.text = course.vencimiento
+        holder.expirationDate.text = course.fecha_final
     }
 
     override fun getItemCount(): Int {

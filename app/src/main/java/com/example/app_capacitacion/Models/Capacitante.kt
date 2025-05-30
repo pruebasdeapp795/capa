@@ -18,7 +18,9 @@ data class Capacitante(
     data class Curso(
         val id: Int,
         val nombre_curso: String,
-        val vigencia_curso: String,
+        val fecha_inicio: String,
+        val duracion_meses: String,
+        val fecha_final: String,
         val instructor: Instructor
     )
 

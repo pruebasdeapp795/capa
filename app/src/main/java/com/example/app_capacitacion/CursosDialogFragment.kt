@@ -29,7 +29,7 @@ class CursosDialogFragment : DialogFragment() {
             val args = Bundle().apply {
                 // Mapeamos Capacitante.Curso a tu modelo Course para el adaptador
                 val simplifiedCourses = courses.map {
-                    Course(nombre = it.nombre_curso, vencimiento = it.vigencia_curso)
+                    Course(nombre = it.nombre_curso, fecha_inicio = it.fecha_inicio, duracion_meses = it.duracion_meses, fecha_final = it.fecha_final)
                 }
                 // Asegúrate de que Course sea Serializable para esto
                 putSerializable(ARG_COURSES, ArrayList(simplifiedCourses) as Serializable)
