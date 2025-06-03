@@ -25,13 +25,9 @@ class DialogInfo : DialogFragment() {
         }
     }
 
-    // ¡NUEVO MÉTODO!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Establece el estilo del diálogo aquí
-        // Usa `R.style.FullScreenDialog` si tu archivo se llama `styles.xml`
-        // O `R.style.Theme_TuApp_FullScreenDialog` si lo definiste en `themes.xml` dentro de un Theme.
-        setStyle(STYLE_NORMAL, R.style.FullScreenDialog) // Asegúrate de que "FullScreenDialog" coincida con el nombre que le diste a tu estilo
+        setStyle(STYLE_NORMAL, R.style.FullScreenDialog)
         arguments?.let {
             capacitante = it.getSerializable(ARG_CAPACITANTE) as? Capacitante
         }
@@ -59,6 +55,7 @@ class DialogInfo : DialogFragment() {
             view.findViewById<TextView>(R.id.correo_persona).text = it.correo
             view.findViewById<TextView>(R.id.estado_persona).text = it.estado
             view.findViewById<TextView>(R.id.nit_persona).text = it.nit
+
         }
 
         val mostrarCursosButton: Button = view.findViewById(R.id.boton_cursos)
@@ -67,20 +64,24 @@ class DialogInfo : DialogFragment() {
                 val cursosDialogFragment = CursosDialogFragment.newInstance(coursesList)
                 cursosDialogFragment.show(childFragmentManager, CursosDialogFragment.TAG)
             } ?: run {
-                // Maneja el caso en el que no haya cursos
                 Toast.makeText(context, "No hay cursos disponibles para este capacitante.", Toast.LENGTH_SHORT).show()
             }
         }
 
         val mostrarInfoAdicionalButton: Button = view.findViewById(R.id.boton_info_addi)
         mostrarInfoAdicionalButton.setOnClickListener {
-            val fechaIngreso = "2025-04-21"
-            val cargo = "Ejemplo de cargo"
-            val empresa = "Ejemplo de empresa"
-            val nit = capacitante?.nit ?: "N/A"
+            val fechaIngreso = capacitante?.fecha_ingreso
+            val cargo = capacitante?.cargo
+            val empresa = capacitante?.empresa
+            val nit = capacitante?.nit
 
-            val additionalInfoBottomSheet = AdditionalInfoBottomSheet.newInstance(fechaIngreso, cargo, empresa, nit)
-            additionalInfoBottomSheet.show(childFragmentManager, AdditionalInfoBottomSheet.TAG)
+            if (fechaIngreso != null && cargo != null && empresa != null && nit != null) {
+                val additionalInfoBottomSheet = AdditionalInfoBottomSheet.newInstance(fechaIngreso, cargo, empresa, nit)
+                additionalInfoBottomSheet.show(childFragmentManager, AdditionalInfoBottomSheet.TAG)
+            } else {
+                Toast.makeText(context, "Información adicional incompleta para este capacitante.", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 }

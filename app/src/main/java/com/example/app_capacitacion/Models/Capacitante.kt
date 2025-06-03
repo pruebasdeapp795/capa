@@ -12,6 +12,8 @@ data class Capacitante(
     val estado: String?,
     val empresa: String?,
     val nit: String?,
+    val fecha_ingreso: String?,
+    val cargo: String?,
     val cursos: List<Curso>
 ) : Serializable {
 

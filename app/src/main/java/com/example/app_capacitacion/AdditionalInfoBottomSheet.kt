@@ -20,7 +20,7 @@ class AdditionalInfoBottomSheet : BottomSheetDialogFragment() {
         private const val ARG_EMPRESA = "empresa"
         private const val ARG_NIT = "nit"
 
-        fun newInstance(fechaIngreso: String, cargo: String, empresa: String, nit: String): AdditionalInfoBottomSheet {
+        fun newInstance(fechaIngreso: String?, cargo: String?, empresa: String?, nit: String?): AdditionalInfoBottomSheet {
             val fragment = AdditionalInfoBottomSheet()
             val args = Bundle().apply {
                 putString(ARG_FECHA_INGRESO, fechaIngreso)
@@ -33,6 +33,7 @@ class AdditionalInfoBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,10 +44,10 @@ class AdditionalInfoBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fechaIngreso = arguments?.getString(ARG_FECHA_INGRESO)
-        val cargo = arguments?.getString(ARG_CARGO)
-        val empresa = arguments?.getString(ARG_EMPRESA)
-        val nit = arguments?.getString(ARG_NIT)
+        val fechaIngreso = arguments?.getString(ARG_FECHA_INGRESO) ?: "No disponible"
+        val cargo = arguments?.getString(ARG_CARGO) ?: "No disponible"
+        val empresa = arguments?.getString(ARG_EMPRESA) ?: "No disponible"
+        val nit = arguments?.getString(ARG_NIT) ?: "No disponible"
 
         view.findViewById<TextView>(R.id.fecha_ingreso_persona_bs).text = fechaIngreso
         view.findViewById<TextView>(R.id.cargo_persona_bs).text = cargo
