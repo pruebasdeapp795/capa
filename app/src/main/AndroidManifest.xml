@@ -32,9 +32,7 @@
             android:name=".LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".InicioActivity"
             android:exported="true"

@@ -10,7 +10,10 @@
     <item
         android:id="@+id/navigation_info"
         android:icon="@drawable/home"
-        android:title="Informacion usuario" />
+        android:title="Informacion usuario"
+        android:enabled="false"
+
+        />
 
     <item
         android:id="@+id/navigation_notifications"
