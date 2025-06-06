@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:text="Fecha de Ingreso:"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_weight="1"
             android:text="Cargo:"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:text="Empresa:"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:text="NIT:"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView

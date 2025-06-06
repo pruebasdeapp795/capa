@@ -79,8 +79,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_nombre" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Nombre:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/nombre_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="juan perez" android:textSize="16sp" />
+            <TextView android:id="@+id/label_nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/nombre_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="juan perez"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,8 +101,20 @@
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_tipo_documento" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tipo de Documento:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/tipo_documento_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="Cédula" android:textSize="16sp" />
+            <TextView android:id="@+id/label_tipo_documento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tipo de Documento:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/tipo_documento_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Cédula"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +122,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_cedula" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="N° Documento:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
+            <TextView android:id="@+id/label_cedula"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="N° Documento:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
             <TextView android:id="@+id/cedula_persona"
                 android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="145264765" android:textSize="16sp" />
         </LinearLayout>
@@ -108,8 +139,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_Telefono" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="N° Telefono:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/Telefono_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="3112515101" android:textSize="16sp" />
+            <TextView android:id="@+id/label_Telefono"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="N° Telefono:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/Telefono_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="3112515101"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,8 +160,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_correo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Correo:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/correo_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="example@example.com" android:textSize="16sp" />
+            <TextView android:id="@+id/label_correo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Correo:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/correo_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="example@example.com"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,26 +181,52 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_estado" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Estado:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/estado_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="Autorizado" android:textSize="16sp" />
+            <TextView android:id="@+id/label_estado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Estado:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/estado_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Autorizado"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView android:id="@+id/label_nit" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="NIT:" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
-            <TextView android:id="@+id/nit_persona" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="123456789-0" android:textSize="16sp" />
+            <TextView android:id="@+id/label_nit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NIT:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/nit_persona"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="123456789-0"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/boton_cursos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:background="@drawable/round_corner"
             android:backgroundTint="#F9BE00"
             android:text="Cursos"
+            android:textSize="17sp"
             android:textColor="#000000" />
 
         <Button
@@ -154,6 +235,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:textSize="17sp"
             android:background="@drawable/round_corner"
             android:backgroundTint="#A6C6EB"
             android:text="informacion adiccional"

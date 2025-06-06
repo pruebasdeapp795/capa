@@ -76,6 +76,7 @@
                 android:layout_height="38dp"
                 android:layout_gravity="bottom"
                 android:text="Capacitacion"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -111,6 +112,7 @@
                 android:layout_height="38dp"
                 android:layout_gravity="bottom"
                 android:text="Capacitacion"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

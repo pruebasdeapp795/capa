@@ -22,6 +22,7 @@
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/tb"
         android:text="Cerrar"
+        android:textSize="18sp"
         android:textColor="@color/white" />
 
 </LinearLayout>

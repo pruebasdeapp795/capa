@@ -10,6 +10,7 @@
     app:cardElevation="4dp">
 
     <LinearLayout
+        android:id="@+id/course_status_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -54,6 +55,16 @@
             android:text="20/12/2025"
             android:textSize="15sp"
             android:paddingBottom="6dp" />
+
+        <TextView
+            android:id="@+id/textViewCourseStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: Activo"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_gravity="end"
+            android:paddingTop="4dp" />
 
     </LinearLayout>
 

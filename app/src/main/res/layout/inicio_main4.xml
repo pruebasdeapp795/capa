@@ -51,6 +51,7 @@
         android:background="@drawable/round_corner"
         android:backgroundTint="#F9BE00"
         android:text="Consulta"
+        android:textSize="17sp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
