@@ -36,9 +36,23 @@ class CourseAdapter (
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val course = courses[position]
-        holder.courseName.text = course.nombre
-        holder.expirationDate.text = course.fecha_final
+        val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Formato de entrada desde Laravel
+        val outputDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()) // Formato de salida deseado
 
+        try {
+            val finalDateParsed = inputDateFormat.parse(course.fecha_final)
+            if (finalDateParsed != null) {
+                holder.expirationDate.text = outputDateFormat.format(finalDateParsed) // Formatea la fecha para mostrar
+            } else {
+                holder.expirationDate.text = "Fecha inválida" // Manejo de error si la fecha no se puede parsear
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            holder.expirationDate.text = "Error de formato" // Otro manejo de error
+        }
+
+
+        holder.courseName.text = course.nombre
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Asegúrate de que el formato coincida con Laravel
         val today = Calendar.getInstance().time // Fecha y hora actuales
         var calculatedStatus: String = "Desconocido"

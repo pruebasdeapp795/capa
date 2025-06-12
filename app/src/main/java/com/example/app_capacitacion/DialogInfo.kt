@@ -60,11 +60,12 @@ class DialogInfo : DialogFragment() {
 
         val mostrarCursosButton: Button = view.findViewById(R.id.boton_cursos)
         mostrarCursosButton.setOnClickListener {
-            capacitante?.cursos?.let { coursesList ->
-                val cursosDialogFragment = CursosDialogFragment.newInstance(coursesList)
-                cursosDialogFragment.show(childFragmentManager, CursosDialogFragment.TAG)
-            } ?: run {
+            val cursos = capacitante?.cursos
+            if (cursos.isNullOrEmpty()) {
                 Toast.makeText(context, "No hay cursos disponibles para este capacitante.", Toast.LENGTH_SHORT).show()
+            } else {
+                val cursosDialogFragment = CursosDialogFragment.newInstance(cursos)
+                cursosDialogFragment.show(childFragmentManager, CursosDialogFragment.TAG)
             }
         }
 

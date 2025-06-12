@@ -67,8 +67,6 @@ class CursosDialogFragment : DialogFragment() {
         courseAdapter = CourseAdapter(courseList)
         recyclerView.adapter = courseAdapter
 
-        // Ya no necesitamos los dummyCourses aquí, la lista se pasa desde DialogInfo
-        // courseAdapter.updateCourses(dummyCourses) // Esto se elimina
 
         val closeButton: Button = view.findViewById(R.id.buttonCloseDialog)
         closeButton.setOnClickListener {
