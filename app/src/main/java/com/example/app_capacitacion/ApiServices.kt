@@ -33,8 +33,4 @@ interface ApiServices {
     @POST("logout")
     fun logout(@Header("Authorization") authToken: String): Call<GeneralResponse>
 
-
-
-
-
 }

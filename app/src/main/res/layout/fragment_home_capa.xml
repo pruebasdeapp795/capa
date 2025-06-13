@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/linear_card"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/linear_card"
     tools:context=".HomeCapa">
 
     <FrameLayout
@@ -19,7 +20,7 @@
             android:layout_width="185dp"
             android:layout_height="40dp"
             android:background="@drawable/cards_corner"
-            android:backgroundTint="#A6C6EB" />
+            android:backgroundTint="#799ECD" />
 
         <ImageView
             android:id="@+id/toolbar_logo"
@@ -29,92 +30,78 @@
             android:maxWidth="120dp"
             android:src="@drawable/logo_tubosa"
             android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="29dp"
-            android:layout_marginStart="8dp"/>
-
+            android:layout_marginStart="29dp" />
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/drag"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/linear_card"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.81"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@drawable/linear_card"
+        android:paddingHorizontal="20dp" >
+        <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="191dp" android:layout_weight="1"
+        android:layout_marginEnd="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="38dp"
+        android:background="@drawable/linear_card"
+        android:backgroundTint="#E7E4E2"
+        android:elevation="5dp">
+
+        <ImageView
+            android:id="@+id/buttonback8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/capacitacion"
+            android:elevation="1dp" />
+
+        <Button
+            android:id="@+id/scan_button2"
+            android:layout_width="match_parent"
+            android:layout_height="38dp" android:layout_gravity="bottom"
+            android:text="Capacitación"
+            android:background="@drawable/linear_card"
+            android:backgroundTint="#E0E9F4"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:elevation="1dp" /> </FrameLayout>
 
         <FrameLayout
             android:layout_width="0dp"
-            android:layout_height="191dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="38dp"
-            android:layout_weight="1"
+            android:layout_height="191dp" android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp" android:layout_marginTop="38dp"
             android:background="@drawable/linear_card"
             android:backgroundTint="#E7E4E2"
-            android:elevation="28dp">
-
-            <ImageView
-                android:id="@+id/buttonback8"
-                android:layout_width="match_parent"
-                android:layout_height="137dp"
-                android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/capacitacion"
-                app:layout_constraintBottom_toTopOf="@+id/textView6"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/scan_button2"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_gravity="bottom"
-                android:text="Capacitacion"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="189dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/linear_card"
-            android:backgroundTint="#E7E4E2"
-            android:elevation="28dp">
+            android:elevation="5dp">
 
             <ImageView
                 android:id="@+id/view_capa"
                 android:layout_width="match_parent"
-                android:layout_height="137dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/capacitacion"
-                app:layout_constraintBottom_toTopOf="@+id/textView6"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/capacitacion"
+                android:elevation="1dp" />
 
             <Button
                 android:id="@+id/scan_button"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_gravity="bottom"
-                android:text="Capacitacion"
+                android:layout_height="38dp" android:layout_gravity="bottom"
+                android:text="Capacitación"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:background="@drawable/linear_card"
+                android:backgroundTint="#E0E9F4"
+                android:textStyle="bold"
+                android:elevation="1dp" />
 
         </FrameLayout>
     </LinearLayout>
