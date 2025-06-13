@@ -44,7 +44,7 @@ class CourseAdapter (
             if (finalDateParsed != null) {
                 holder.expirationDate.text = outputDateFormat.format(finalDateParsed) // Formatea la fecha para mostrar
             } else {
-                holder.expirationDate.text = "Fecha inválida" // Manejo de error si la fecha no se puede parsear
+                holder.expirationDate.text = "Fecha inválida"
             }
         } catch (e: Exception) {
             e.printStackTrace()
