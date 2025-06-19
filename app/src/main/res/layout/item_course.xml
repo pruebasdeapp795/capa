@@ -27,7 +27,7 @@
             android:fontFamily="serif"
             android:text="Nombre del Curso"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Curso de ejemplo"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:text="Vigencia del curso"
             android:fontFamily="serif"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="20/12/2025"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:paddingBottom="6dp" />
 
         <TextView

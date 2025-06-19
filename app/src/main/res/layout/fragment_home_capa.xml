@@ -35,50 +35,48 @@
 
     <LinearLayout
         android:id="@+id/drag"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"    android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+        android:orientation="vertical"         android:layout_marginTop="5dp"
         android:background="@drawable/linear_card"
         android:paddingHorizontal="20dp" >
+
         <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="191dp" android:layout_weight="1"
-        android:layout_marginEnd="1dp"
+            android:layout_width="match_parent" android:layout_height="191dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="38dp"
-        android:background="@drawable/linear_card"
-        android:backgroundTint="#E7E4E2"
-        android:elevation="5dp">
-
-        <ImageView
-            android:id="@+id/buttonback8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/capacitacion"
-            android:elevation="1dp" />
-
-        <Button
-            android:id="@+id/scan_button2"
-            android:layout_width="match_parent"
-            android:layout_height="38dp" android:layout_gravity="bottom"
-            android:text="Capacitación"
             android:background="@drawable/linear_card"
-            android:backgroundTint="#E0E9F4"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:elevation="1dp" /> </FrameLayout>
+            android:backgroundTint="#E7E4E2"
+            android:elevation="5dp">
+
+            <ImageView
+                android:id="@+id/buttonback8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/capacitacion"
+                android:elevation="1dp" />
+
+            <Button
+                android:id="@+id/scan_button2"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom"
+                android:text="Capacitación"
+                android:background="@drawable/linear_card"
+                android:backgroundTint="#E0E9F4"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:elevation="1dp" />
+        </FrameLayout>
 
         <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="191dp" android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp" android:layout_marginTop="38dp"
-            android:background="@drawable/linear_card"
+            android:layout_width="match_parent" android:layout_height="191dp"
+            android:layout_marginStart="5dp"     android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp"      android:background="@drawable/linear_card"
             android:backgroundTint="#E7E4E2"
             android:elevation="5dp">
 
@@ -94,7 +92,8 @@
             <Button
                 android:id="@+id/scan_button"
                 android:layout_width="match_parent"
-                android:layout_height="38dp" android:layout_gravity="bottom"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom"
                 android:text="Capacitación"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -102,7 +101,6 @@
                 android:backgroundTint="#E0E9F4"
                 android:textStyle="bold"
                 android:elevation="1dp" />
-
         </FrameLayout>
     </LinearLayout>
 
