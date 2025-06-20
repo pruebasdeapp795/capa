@@ -40,12 +40,16 @@ class HomeCapa : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // val scanButton: Button = view.findViewById(R.id.scan_button)
+        val historyButton: Button = view.findViewById(R.id.history_button)
         val scanButton2: Button = view.findViewById(R.id.scan_button2)
 
-      //  scanButton.setOnClickListener { checkCameraPermissionAndStartScan() }
         scanButton2.setOnClickListener { checkCameraPermissionAndStartScan() }
+
+        historyButton.setOnClickListener {
+
+        }
     }
+
 
     private fun checkCameraPermissionAndStartScan() {
         if (ContextCompat.checkSelfPermission(

@@ -1,107 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/linear_card"
-    tools:context=".HomeCapa">
+    android:background="#F5F7FB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="18dp">
 
-        <View
-            android:id="@+id/square_container"
-            android:layout_width="185dp"
-            android:layout_height="40dp"
-            android:background="@drawable/cards_corner"
-            android:backgroundTint="#799ECD" />
-
-        <ImageView
-            android:id="@+id/toolbar_logo"
-            android:layout_width="122dp"
-            android:layout_height="30dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="120dp"
-            android:src="@drawable/logo_tubosa"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="29dp" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/drag"
-        android:layout_width="match_parent"    android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"         android:layout_marginTop="5dp"
-        android:background="@drawable/linear_card"
-        android:paddingHorizontal="20dp" >
-
-        <FrameLayout
-            android:layout_width="match_parent" android:layout_height="191dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="38dp"
-            android:background="@drawable/linear_card"
-            android:backgroundTint="#E7E4E2"
-            android:elevation="5dp">
-
-            <ImageView
-                android:id="@+id/buttonback8"
+            <!-- Card 1: Escanear Código -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/capacitacion"
-                android:elevation="1dp" />
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="16dp">
 
-            <Button
-                android:id="@+id/scan_button2"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_gravity="bottom"
-                android:text="Capacitación"
-                android:background="@drawable/linear_card"
-                android:backgroundTint="#E0E9F4"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:elevation="1dp" />
-        </FrameLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="match_parent" android:layout_height="191dp"
-            android:layout_marginStart="5dp"     android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"      android:background="@drawable/linear_card"
-            android:backgroundTint="#E7E4E2"
-            android:elevation="5dp">
+                    <ImageView
+                        android:src="@drawable/ic_qr"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="start"
+                        />
 
-            <ImageView
-                android:id="@+id/view_capa"
+
+                    <TextView
+                        android:text="Escanear Código"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginTop="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Apunta la cámara al código QR o de barras para identificar el producto."
+                        android:textSize="14sp"
+                        android:textColor="#5A5A5A"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/scan_button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#0A6CA7"
+                        android:drawablePadding="8dp"
+                        android:padding="12dp"
+                        android:text="Iniciar Escaneo"
+                        android:textAllCaps="false"
+                        android:drawableEnd="@drawable/ic_camera"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/capacitacion"
-                android:elevation="1dp" />
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="16dp">
+                <LinearLayout
 
-            <Button
-                android:id="@+id/scan_button"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_gravity="bottom"
-                android:text="Capacitación"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:background="@drawable/linear_card"
-                android:backgroundTint="#E0E9F4"
-                android:textStyle="bold"
-                android:elevation="1dp" />
-        </FrameLayout>
-    </LinearLayout>
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_history"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="start"
+                        />
+
+                    <TextView
+                        android:text="Historial de Escaneos"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginTop="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Consulta los productos que has escaneado anteriormente."
+                        android:textSize="14sp"
+                        android:textColor="#5A5A5A"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/history_button"
+                        android:text="Ver Historial"
+                        android:textAllCaps="false"
+                        android:drawableEnd="@drawable/ic_list"
+                        android:backgroundTint="#177C5B"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:padding="12dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+
 
 </LinearLayout>
