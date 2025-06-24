@@ -12,7 +12,10 @@
         android:id="@+id/main_card_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"  android:layout_marginTop="24dp"   android:layout_marginEnd="24dp"    app:cardCornerRadius="8dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="9dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +30,7 @@
                 android:id="@+id/tvHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="#4285F4"
+                android:background="@color/tb"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="TU INFORMACIÓN"
@@ -244,6 +247,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+
+
     <Button
         android:id="@+id/boton_cursos"
         android:layout_width="0dp"
@@ -255,28 +260,31 @@
         android:text="CURSOS"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:drawableStart="@drawable/graduado"
+        android:padding="8dp"
         app:cornerRadius="8dp"
-        app:iconGravity="textStart"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_card_container" />
+        app:layout_constraintTop_toBottomOf="@id/main_card_container"/>
+
 
     <Button
         android:id="@+id/boton_info_addi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"  android:layout_marginEnd="24dp"    android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp" android:background="@drawable/linear_card"
-        android:backgroundTint="#4285F4"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/linear_card"
+        android:backgroundTint="@color/tb"
         android:text="INFORMACIÓN ADICIONAL"
         android:textColor="@android:color/white"
+        android:drawableStart="@drawable/info"
         android:textSize="18sp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:padding="18dp"
         app:cornerRadius="8dp"
-        app:iconGravity="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/boton_cursos"
