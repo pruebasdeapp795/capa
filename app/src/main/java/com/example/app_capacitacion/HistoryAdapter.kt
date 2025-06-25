@@ -7,8 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_capacitacion.Models.Capacitante
 
-class HistoryAdapter(private val historyList: List<Capacitante>) :
-    RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+class HistoryAdapter( private val historyList: List<Capacitante>,
+    // This is the crucial change: add a clickListener parameter
+                      private val clickListener: (Capacitante) -> Unit
+) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     class HistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName: TextView = itemView.findViewById(R.id.tvCapacitanteName)
@@ -30,6 +32,11 @@ class HistoryAdapter(private val historyList: List<Capacitante>) :
         holder.tvDocument.text = "Documento: ${capacitante.numero_documento}"
         holder.tvCompany.text = "Empresa: ${capacitante.empresa}"
         // Asigna más datos aquí
+
+        // This is the second crucial change: set the click listener on the item
+        holder.itemView.setOnClickListener {
+            clickListener(capacitante) // Call the passed-in lambda with the current Capacitante
+        }
     }
 
     override fun getItemCount(): Int {

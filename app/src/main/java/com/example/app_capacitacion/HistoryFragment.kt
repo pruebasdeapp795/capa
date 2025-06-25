@@ -50,10 +50,18 @@ class HistoryFragment : Fragment() {
         } else {
             noHistoryTextView.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
-            historyAdapter = HistoryAdapter(scanHistory)
+
+            // THIS IS THE KEY CHANGE: Pass the click listener to your adapter
+            historyAdapter = HistoryAdapter(scanHistory) { clickedCapacitante ->
+                // When an item in the history is clicked, show the DialogInfo
+                val dialogInfo = DialogInfo.newInstance(clickedCapacitante)
+                // Use parentFragmentManager to show the dialog over the whole activity
+                dialogInfo.show(parentFragmentManager, "DialogInfoTag")
+            }
             recyclerView.adapter = historyAdapter
         }
 
         return view
     }
+
 }
