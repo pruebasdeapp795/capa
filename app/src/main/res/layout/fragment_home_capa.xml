@@ -11,6 +11,8 @@
             android:layout_height="match_parent"
             android:padding="18dp">
 
+
+
             <!-- Card 1: Escanear Código -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -36,7 +38,8 @@
 
 
                     <TextView
-                        android:text="Escanear Código"
+                        android:text="Escanear QR del Usuario"
+                        android:textColor="@color/tb"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:layout_marginTop="12dp"
@@ -44,7 +47,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:text="Apunta la cámara al código QR o de barras para identificar el producto."
+                        android:text="Apunta la cámara al código QR  del usuarios para identificar los cursos a los que está inscrito."
                         android:textSize="14sp"
                         android:textColor="#5A5A5A"
                         android:gravity="center"
@@ -92,13 +95,14 @@
                     <TextView
                         android:text="Historial de Escaneos"
                         android:textStyle="bold"
+                        android:textColor="@color/tb"
                         android:textSize="20sp"
                         android:layout_marginTop="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:text="Consulta los productos que has escaneado anteriormente."
+                        android:text="Consulta los usuarios que has escaneado anteriormente."
                         android:textSize="14sp"
                         android:textColor="#5A5A5A"
                         android:gravity="center"

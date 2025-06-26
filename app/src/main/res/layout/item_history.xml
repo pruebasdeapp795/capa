@@ -16,30 +16,33 @@
         <TextView
             android:id="@+id/tvCapacitanteName"
             android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="4dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="Nombre: [Nombre del Capacitante]" />
+            android:text="Nombre: [Nombre del Usuario]" />
+
 
         <TextView
             android:id="@+id/tvCapacitanteDocument"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="4dp"
             android:textSize="16sp"
-            android:layout_marginTop="4dp"
             android:text="Documento: [Número de Documento]" />
 
         <TextView
             android:id="@+id/tvCapacitanteCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="4dp"
             android:textSize="16sp"
             android:layout_marginTop="4dp"
             android:text="Empresa: [Empresa]" />
-
-
-
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

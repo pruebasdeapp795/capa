@@ -23,8 +23,6 @@ import retrofit2.Response
 
 class HomeCapa : Fragment() {
 
-
-
     private val PREFS_NAME = "ScanHistory"
     private val HISTORY_KEY = "lastScans"
     private val MAX_HISTORY_SIZE = 5
@@ -54,16 +52,11 @@ class HomeCapa : Fragment() {
         scanButton2.setOnClickListener { checkCameraPermissionAndStartScan() }
 
         historyButton.setOnClickListener {
-// Obtén el historial actual
-            val currentHistory = getScanHistory()
-// Crea una nueva instancia de HistoryFragment y pásale el historial
-            val historyFragment = HistoryFragment.newInstance(currentHistory)
-
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, historyFragment)
-                .addToBackStack(null)
-                .commit()
+            val historyList = getScanHistory() // Obtén el historial desde donde lo guardas
+            val dialog = HistoryDialogFragment.newInstance(historyList)
+            dialog.show(parentFragmentManager, "history_dialog")
         }
+
     }
 
 
@@ -190,7 +183,7 @@ class HomeCapa : Fragment() {
         sharedPrefs.edit().putString(HISTORY_KEY, updatedJson).apply()
     }
 
-    // Función para obtener el historial (útil para el HistoryFragment)
+
     fun getScanHistory(): List<Capacitante> {
         val sharedPrefs = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val gson = Gson()
