@@ -54,9 +54,9 @@ class HomeCapa : Fragment() {
         scanButton2.setOnClickListener { checkCameraPermissionAndStartScan() }
 
         historyButton.setOnClickListener {
-            // Obtén el historial actual
+// Obtén el historial actual
             val currentHistory = getScanHistory()
-            // Crea una nueva instancia de HistoryFragment y pásale el historial
+// Crea una nueva instancia de HistoryFragment y pásale el historial
             val historyFragment = HistoryFragment.newInstance(currentHistory)
 
             parentFragmentManager.beginTransaction()
@@ -128,7 +128,7 @@ class HomeCapa : Fragment() {
                 if (response.isSuccessful) {
                     val capacitante = response.body()
                     if (capacitante != null) {
-                        // Guardar el capacitante en el historial
+// Guardar el capacitante en el historial
                         saveCapacitanteToHistory(capacitante)
 
                         val dialogInfoFragment = DialogInfo.newInstance(capacitante)
@@ -160,7 +160,7 @@ class HomeCapa : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    // --- Funciones para manejar el historial ---
+// --- Funciones para manejar el historial ---
 
     private fun saveCapacitanteToHistory(capacitante: Capacitante) {
         val sharedPrefs = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -174,18 +174,18 @@ class HomeCapa : Fragment() {
             gson.fromJson(json, type)
         }
 
-        // Elimina el capacitante si ya existe para moverlo al principio
+// Elimina el capacitante si ya existe para moverlo al principio
         historyList.removeAll { it.numero_documento == capacitante.numero_documento }
 
-        // Añadir el nuevo capacitante al inicio de la lista
+// Añadir el nuevo capacitante al inicio de la lista
         historyList.add(0, capacitante)
 
-        // Mantener solo los últimos MAX_HISTORY_SIZE elementos
+// Mantener solo los últimos MAX_HISTORY_SIZE elementos
         if (historyList.size > MAX_HISTORY_SIZE) {
             historyList = historyList.subList(0, MAX_HISTORY_SIZE)
         }
 
-        // Guardar la lista actualizada
+// Guardar la lista actualizada
         val updatedJson = gson.toJson(historyList)
         sharedPrefs.edit().putString(HISTORY_KEY, updatedJson).apply()
     }
